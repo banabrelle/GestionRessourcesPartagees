@@ -15,11 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            $this->call([
+            PermissionSeeder::class,       // 1. Rôles & permissions Spatie
+            TypePersonnelSeeder::class,    // 2. Types de personnel
+            DivisionSeeder::class,         // 3. Divisions CENADI
+            ServiceSeeder::class,          // 4. Services par division
+            BureauSeeder::class,           // 5. Bureaux par service
+            UserSeeder::class,             // 6. Users + Personnels
+            TagSeeder::class,              // 7. Tags de ressources
+            RessourceSeeder::class,        // 8. Ressources (matérielles + logicielles)
+            ReservationSeeder::class,      // 9. Réservations de démonstration
         ]);
+
     }
 }
